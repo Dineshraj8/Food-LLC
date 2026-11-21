@@ -1,32 +1,52 @@
-/* General page styling */
+/* Base page styling */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #ffffff;
-  color: #222222;
+  color: #222;
+  background: #fff;
 }
 
-/* Navbar */
+/* Navbar: it scrolls normally with the page */
 .navbar {
+  min-height: 60px;
+  margin-bottom: 18px;
+  border: 2px solid #222;
   border-radius: 0;
-  margin-bottom: 20px;
   background-color: #d3d3d3;
-  border: 2px solid #222222;
 }
 
-.navbar-default .navbar-brand {
-  color: #222222;
-  font-size: 1.7em;
-  font-weight: bold;
-}
-
-.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand,
 .navbar-default .navbar-brand:focus {
-  color: #555555;
+  height: 56px;
+  padding-top: 17px;
+  color: #222;
+  font-size: 1.7em;
+  font-weight: 700;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #555;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: #222;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #222;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #eee;
 }
 
 /* Mobile dropdown */
 #mobile-menu {
-  border-top: 1px solid #222222;
+  border-top: 1px solid #222;
 }
 
 #mobile-menu .navbar-nav {
@@ -35,60 +55,134 @@ body {
 }
 
 #mobile-menu .navbar-nav > li > a {
-  color: #222222;
-  font-size: 1.2em;
-  border-bottom: 1px solid #777777;
   padding-top: 10px;
   padding-bottom: 10px;
+  color: #222;
+  font-size: 1.15em;
+  border-bottom: 1px solid #777;
 }
 
-#mobile-menu .navbar-nav > li > a:hover {
-  background-color: #eeeeee;
+#mobile-menu .navbar-nav > li > a:hover,
+#mobile-menu .navbar-nav > li > a:focus {
+  background-color: #eee;
 }
 
-/* Main heading */
+/* Page heading */
 .page-heading {
-  margin-top: 25px;
-  margin-bottom: 35px;
+  margin: 20px 0 28px;
+  font-size: 2em;
+  font-weight: 700;
 }
 
-/* Menu sections */
+/* Responsive menu layout
+   CSS Grid makes the requested three / two-plus-full / one-column layout explicit. */
+.menu-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+  margin: 0;
+}
+
+/* Bootstrap 3 adds clearfix pseudo-elements to .row; disable them inside the grid. */
+.menu-row::before,
+.menu-row::after {
+  display: none;
+  content: none;
+}
+
+/* Override Bootstrap column floats/widths so Grid controls the layout. */
+.menu-row > section[class*="col-"] {
+  float: none;
+  width: auto;
+  padding-right: 0;
+  padding-left: 0;
+  min-width: 0;
+}
+
+/* Menu panels */
 .menu-section {
-  background-color: #bdbdbd;
-  border: 2px solid #222222;
-  padding: 15px;
+  min-height: 390px;
   margin-bottom: 25px;
-  min-height: 700px;
+  padding: 12px 15px 18px;
+  border: 2px solid #222;
+  background-color: #bdbdbd;
 }
 
 .menu-section h2 {
-  margin-top: 10px;
-  margin-bottom: 25px;
-  font-size: 1.8em;
-  font-weight: bold;
+  margin: 5px 0 18px;
+  font-size: 1.45em;
+  font-weight: 700;
 }
 
 .menu-section p {
-  font-size: 1.05em;
-  line-height: 1.7;
-  margin-bottom: 18px;
+  font-size: 1em;
+  line-height: 1.45;
+  margin-bottom: 14px;
 }
 
 .back-to-top {
   display: inline-block;
-  margin-top: 15px;
-  font-weight: bold;
+  margin-top: 5px;
+  font-weight: 700;
 }
 
-/* Desktop and tablet: three equal-width sections */
-@media (min-width: 768px) {
+/* Tablet: Chicken + Beef on row one; Sushi spans both columns on row two. */
+@media (min-width: 768px) and (max-width: 991px) {
+  .menu-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .menu-row > section:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
   .menu-section {
-    min-height: 700px;
+    min-height: 340px;
+  }
+
+  .page-heading {
+    margin-bottom: 25px;
   }
 }
 
+/* Desktop: all three menu boxes sit in one horizontal row. */
 @media (min-width: 992px) {
+  .menu-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .menu-section {
-    min-height: 700px;
+    min-height: 430px;
+  }
+}
+
+/* Mobile: panels stack and use natural content height */
+@media (max-width: 767px) {
+  .menu-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .menu-row > section:nth-child(3) {
+    grid-column: auto;
+  }
+
+  .navbar {
+    margin-bottom: 15px;
+  }
+
+  .page-heading {
+    margin: 18px 0 22px;
+    font-size: 1.9em;
+  }
+
+  .menu-section {
+    min-height: 0;
+    margin-bottom: 22px;
+    padding: 12px 15px 18px;
+  }
+
+  .menu-section h2 {
+    margin-bottom: 15px;
   }
 }
