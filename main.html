@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Food-LLC Solutions</title>
+<style>
+:root{color-scheme:light;--bg:#fafbfd;--surface:#ffffff;--ink:#2b3347;--muted:#7a8399;--line:#eceff5;--accent:#6c7ae0;--accent-soft:#f0f2fd}
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;min-height:100vh}
+.wrap{max-width:860px;margin:0 auto;padding:56px 20px}
+h1{font-size:clamp(1.8rem,4vw,2.4rem);letter-spacing:-.02em}
+.sub{color:var(--muted);margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:36px}
+.card{display:flex;flex-direction:column;gap:6px;padding:22px;background:var(--surface);border:1px solid var(--line);border-radius:16px;text-decoration:none;color:inherit;box-shadow:0 1px 3px rgba(43,51,71,.04);transition:border-color .15s,transform .15s,box-shadow .15s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 20px -10px rgba(108,122,224,.35)}
+.card:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tag{align-self:flex-start;font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.card h2{font-size:1.15rem;margin-top:8px}
+.open{margin-top:10px;font-size:.9rem;font-weight:600;color:var(--accent)}
+footer{margin-top:40px;font-size:.85rem;color:var(--muted)}
+footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Coursera Solutions</h1>
+  <p class="sub">Pick a module to open its solution site.</p>
+
+  <div class="grid">
+    <a class="card" href="https://dineshraj8.github.io/Food-LLC/module3-solution/">
+      <span class="tag">Module 3</span>
+      <h2>Module 3 Solution</h2>
+      <span class="open">Open solution</span>
+    </a>
+    <a class="card" href="https://dineshraj8.github.io/Food-LLC/module4-solution/">
+      <span class="tag">Module 4</span>
+      <h2>Module 4 Solution</h2>
+      <span class="open">Open solution</span>
+    </a>
+    <a class="card" href="https://dineshraj8.github.io/Food-LLC/module5-solution/">
+      <span class="tag">Module 5</span>
+      <h2>Module 5 Solution</h2>
+      <span class="open">Open solution</span>
+    </a>
+    <a class="card" href="https://dineshraj8.github.io/Food-LLC/other-solution/">
+      <span class="tag">Other</span>
+      <h2>Other Solution</h2>
+      <span class="open">Open solution</span>
+    </a>
+  </div>
+
+  <footer><a href="https://github.com/Dineshraj8/Food-LLC">View source on GitHub</a></footer>
+</div>
+</body>
+</html>
